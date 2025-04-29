@@ -118,15 +118,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    function startQuiz() {
-        showScreen(questionScreen);
-        currentQuestionIndex = 0;
-        userAnswers = {};
-        scores = { Rouge: 0, Jaune: 0, Vert: 0, Bleu: 0 };
-        // Réinitialiser la bordure du profil dominant
-        dominantProfileDiv.className = 'dominant-profile'; // Enlève les classes de couleur
-        loadQuestion();
-    }
+      function startQuiz() {
+      console.log("Starting quiz - resetting state"); // Pour débogage
+      showScreen(questionScreen); // Affiche l'écran des questions
+      currentQuestionIndex = 0;    // Reset index
+      userAnswers = {};           // Reset réponses
+      scores = { Rouge: 0, Jaune: 0, Vert: 0, Bleu: 0 }; // Reset scores
+      dominantProfileDiv.className = 'dominant-profile'; // Reset bordure profil
+      resultsChartContainer.innerHTML = ''; // Vider le graphique au cas où
+      loadQuestion(); // Charge la Q1 et reset la barre de progression via updateProgressBar
+  }
 
     function updateProgressBar() {
         const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
@@ -347,10 +348,21 @@ document.addEventListener('DOMContentLoaded', () => {
     startButton.addEventListener('click', startQuiz);
     nextButton.addEventListener('click', handleNextButton);
     pdfButton.addEventListener('click', generatePDF);
-    restartButton.addEventListener('click', () => showScreen(startScreen)); // Retour simple à l'accueil
+    restartButton.addEventListener('click', () => {
+    console.log("Restart button clicked - showing start screen"); // Pour débogage
+    showScreen(startScreen);
+}); // Retour simple à l'accueil
 
     // --- Initialisation ---
-    showScreen(startScreen); // Afficher l'écran de démarrage au chargement
+      function showScreen(screenToShow) {
+      console.log("Attempting to show screen:", screenToShow.id); // Pour débogage
+      screens.forEach(screen => {
+          screen.classList.add('hidden');
+          screen.classList.remove('active');
+      });
+      screenToShow.classList.remove('hidden');
+      screenToShow.classList.add('active');
+  } // Afficher l'écran de démarrage au chargement
 
     // --- Service Worker (inchangé, si tu l'utilises) ---
     if ('serviceWorker' in navigator) { /* ... code du service worker ... */ }
