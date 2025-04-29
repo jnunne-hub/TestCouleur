@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire DISC IOTA</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4A90E2"/> <!-- Nouvelle couleur thème (bleu doux) -->
+    <link rel="icon" href="images/icon-192.png" type="image/png">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <img src="images/icon-192.png" alt="IOTA Logo" class="logo"> <!-- Optionnel: Ajouter un logo -->
+            <h1>Questionnaire DISC</h1>
+        </header>
+
+        <div id="start-screen" class="screen active">
+            <h2>Découvrez Votre Profil</h2>
+            <p>Choisissez la description qui vous correspond le mieux à chaque étape.</p>
+            <button id="start-button" class="button-primary"><i class="fas fa-play"></i> Commencer</button>
+        </div>
+
+        <div id="question-screen" class="screen hidden">
+            <div class="progress-container">
+                 <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <h2 id="question-number">Question X / 25</h2>
+            <div id="options-container">
+                <!-- Les options seront chargées ici par JS -->
+            </div>
+            <div class="navigation-buttons">
+                 <button id="next-button" class="button-primary" disabled>Suivant <i class="fas fa-arrow-right"></i></button>
+            </div>
+            <div id="error-message" class="error hidden"><i class="fas fa-exclamation-circle"></i> Veuillez sélectionner une option.</div>
+        </div>
+
+        <div id="results-screen" class="screen hidden">
+            <h2><i class="fas fa-poll"></i> Vos Résultats</h2>
+
+             <!-- Zone pour le graphique -->
+            <div id="results-chart-container">
+                <p>Répartition de vos scores :</p>
+                <div id="results-chart">
+                    <!-- Le graphique sera généré ici -->
+                </div>
+            </div>
+
+            <!-- Zone pour le détail des scores -->
+            <div id="scores">
+                <h3>Scores Détaillés</h3>
+                <p class="score-detail score-Rouge">Rouge (D): <span id="score-Rouge">0</span></p>
+                <p class="score-detail score-Jaune">Jaune (I): <span id="score-Jaune">0</span></p>
+                <p class="score-detail score-Vert">Vert (S): <span id="score-Vert">0</span></p>
+                <p class="score-detail score-Bleu">Bleu (C): <span id="score-Bleu">0</span></p>
+            </div>
+
+             <!-- Zone pour le profil dominant -->
+            <div id="dominant-profile">
+                <h3><i class="fas fa-star"></i> Votre Profil Dominant</h3>
+                <p id="profile-description">...</p>
+            </div>
+
+            <div class="action-buttons">
+                <button id="pdf-button" class="button-secondary"><i class="fas fa-file-pdf"></i> Télécharger (PDF)</button>
+                <button id="restart-button" class="button-secondary"><i class="fas fa-redo"></i> Refaire le test</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+/* --- Variables de Couleurs --- */
+:root {
+    --color-rouge: #D9534F; /* Dominance */
+    --color-jaune: #F0AD4E; /* Influence */
+    --color-vert: #5CB85C;  /* Stabilité */
+    --color-bleu: #428BCA;  /* Conformité */
+
+    --color-primary: #4A90E2; /* Bleu doux pour thème principal */
+    --color-secondary: #777;
+    --color-background: #f8f9fa;
+    --color-card-bg: #ffffff;
+    --color-text: #343a40;
+    --color-text-light: #f8f9fa;
+    --color-border: #dee2e6;
+    --color-selected: #e7f3ff; /* Bleu très clair pour sélection */
+    --color-error: #dc3545;
+}
+
+/* --- Styles Généraux --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+.container {
+    max-width: 700px;
+    margin: 20px auto;
+    background: var(--color-card-bg);
+    padding: 25px 35px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    overflow: hidden; /* Empêche les débordements */
+}
+
+header {
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 15px;
+}
+
+header .logo {
+    max-height: 50px; /* Ajustez si besoin */
+    margin-bottom: 10px;
+}
+
+h1, h2, h3 {
+    color: var(--color-primary);
+    margin-top: 0;
+}
+h1 { font-size: 1.8em; }
+h2 { font-size: 1.5em; margin-bottom: 15px; }
+h3 { font-size: 1.2em; color: var(--color-secondary); margin-bottom: 10px;}
+
+p {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+i { /* Espacement pour les icônes */
+    margin-right: 8px;
+}
+button i {
+    margin-right: 8px;
+}
+button.button-primary i, button.button-secondary i {
+    margin-left: 0; /* Pas d'espace à gauche pour icone dans bouton */
+}
+button.button-primary .fa-arrow-right {
+    margin-left: 8px;
+     margin-right: 0;
+}
+
+/* --- Boutons --- */
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px; /* Boutons arrondis */
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    display: inline-block; /* Permet de centrer avec text-align sur parent */
+    margin: 10px 5px; /* Espacement entre boutons */
+}
+button:active {
+    transform: scale(0.98); /* Effet clic */
+}
+
+.button-primary {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+}
+.button-primary:hover {
+    background-color: #357abd; /* Darker shade */
+}
+.button-primary:disabled {
+    background-color: #b0c4de; /* Light Steel Blue */
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.button-secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-text-light);
+}
+.button-secondary:hover {
+     background-color: #666;
+}
+
+/* Centre les groupes de boutons */
+.navigation-buttons, .action-buttons, #start-screen {
+    text-align: center;
+     margin-top: 20px;
+}
+
+/* --- Écrans --- */
+.screen {
+    /* Transition possible entre écrans (fade) */
+     /* transition: opacity 0.5s ease-in-out; */
+}
+.hidden {
+    display: none;
+}
+.active {
+    display: block;
+    /* opacity: 1; */
+}
+
+/* --- Écran Question --- */
+.progress-container {
+    width: 100%;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    height: 10px;
+}
+.progress-bar {
+    height: 100%;
+    width: 0%; /* Sera mis à jour par JS */
+    background-color: var(--color-primary);
+    border-radius: 5px;
+    transition: width 0.4s ease;
+}
+
+#options-container div {
+    margin-bottom: 12px;
+    padding: 15px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    background-color: #fff;
+}
+#options-container div:hover {
+    background-color: #f1f1f1;
+    border-color: #ccc;
+}
+#options-container div.selected {
+    background-color: var(--color-selected);
+    border-color: var(--color-primary);
+    font-weight: bold;
+    color: var(--color-primary);
+}
+/* Optionnel : Ajouter lettres a,b,c,d */
+/* #options-container div::before {
+    content: attr(data-key) ". ";
+    font-weight: bold;
+    margin-right: 5px;
+    color: var(--color-secondary);
+} */
+
+
+/* --- Écran Résultats --- */
+#results-chart-container {
+    margin: 30px 0;
+    padding: 20px;
+    background-color: #f8f9fa; /* Fond légèrement différent */
+    border-radius: 8px;
+}
+#results-chart-container p {
+    text-align: center;
+    font-weight: bold;
+    color: var(--color-secondary);
+    margin-bottom: 20px;
+}
+
+#results-chart {
+    display: flex; /* Utiliser Flexbox pour aligner les barres */
+    justify-content: space-around; /* Espacer les barres */
+    align-items: flex-end; /* Aligner les barres en bas */
+    height: 180px; /* Hauteur fixe pour le conteneur du graphique */
+    border-bottom: 2px solid var(--color-border); /* Ligne de base */
+    padding: 0 10px; /* Petit padding horizontal */
+}
+
+.chart-bar {
+    width: 15%; /* Largeur des barres */
+    background-color: var(--color-secondary); /* Couleur par défaut */
+    border-radius: 5px 5px 0 0; /* Arrondi en haut */
+    position: relative; /* Pour positionner le texte */
+    transition: height 0.5s ease-out; /* Animation de la hauteur */
+    text-align: center;
+}
+.chart-bar span {
+    position: absolute;
+    bottom: -25px; /* Position du label sous la barre */
+    left: 0;
+    right: 0;
+    font-size: 0.9em;
+    color: var(--color-text);
+    font-weight: bold;
+}
+.chart-bar .score-value {
+    position: absolute;
+    top: -20px; /* Position du score au-dessus */
+    left: 0;
+    right: 0;
+    font-size: 0.85em;
+    color: var(--color-text);
+    font-weight: bold;
+}
+
+/* Couleurs spécifiques aux barres */
+.bar-Rouge { background-color: var(--color-rouge); }
+.bar-Jaune { background-color: var(--color-jaune); }
+.bar-Vert { background-color: var(--color-vert); }
+.bar-Bleu { background-color: var(--color-bleu); }
+
+#scores {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border);
+}
+.score-detail {
+    padding: 5px 10px;
+    margin-bottom: 8px;
+    border-left: 5px solid; /* Ligne de couleur à gauche */
+    border-radius: 4px;
+    background-color: #f8f9fa;
+}
+.score-Rouge { border-left-color: var(--color-rouge); }
+.score-Jaune { border-left-color: var(--color-jaune); }
+.score-Vert { border-left-color: var(--color-vert); }
+.score-Bleu { border-left-color: var(--color-bleu); }
+.score-detail span { font-weight: bold; float: right; } /* Score à droite */
+
+
+#dominant-profile {
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid var(--color-secondary); /* Bordure par défaut */
+    background-color: #f8f9fa;
+    transition: border-color 0.5s ease; /* Animation de la couleur de bordure */
+}
+#dominant-profile h3 {
+     margin-bottom: 10px;
+}
+
+/* Classes pour la bordure colorée du profil dominant */
+#dominant-profile.dominant-Rouge { border-color: var(--color-rouge); }
+#dominant-profile.dominant-Jaune { border-color: var(--color-jaune); }
+#dominant-profile.dominant-Vert { border-color: var(--color-vert); }
+#dominant-profile.dominant-Bleu { border-color: var(--color-bleu); }
+/* Style pour les profils multiples (peut être ajusté) */
+#dominant-profile.dominant-multiple {
+    border-image: linear-gradient(to right, var(--color-rouge), var(--color-jaune), var(--color-vert), var(--color-bleu)) 1; /* Dégradé multicolore */
+    border-style: solid;
+    border-width: 2px;
+}
+
+
+/* --- Messages d'erreur --- */
+.error {
+    color: var(--color-error);
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+    padding: 8px;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+}
+
+/* --- Responsivité (Simple) --- */
+@media (max-width: 600px) {
+    .container {
+        margin: 10px;
+        padding: 20px;
+    }
+    h1 { font-size: 1.5em; }
+    h2 { font-size: 1.3em; }
+    button {
+        padding: 10px 20px;
+        font-size: 0.95em;
+    }
+    #results-chart {
+        height: 150px; /* Plus petit sur mobile */
+    }
+    .chart-bar span { /* Label sous la barre */
+        bottom: -20px;
+        font-size: 0.8em;
+    }
+     .chart-bar .score-value { /* Score au dessus */
+        top: -18px;
+        font-size: 0.8em;
+    }
+}
